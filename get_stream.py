@@ -1,7 +1,7 @@
 import subprocess
 
 match_title = 'Sachkhand Sri Harmandir Sahib'
-command = f'yt-dlp https://www.youtube.com/@SGPCSriAmritsar/streams -g -f "ba[ext=mp4]" --lazy-playlist --max-downloads 1 --match-filter "live_status = is_live & title *= \"{match_title}\""'
+command = f'yt-dlp https://www.youtube.com/@SGPCSriAmritsar/streams -g -f "ba[ext=mp4]" --lazy-playlist --playlist-end 10 --max-downloads 1 --match-filter "live_status = is_live & title *= \"{match_title}\""'
 
 def get_stream():
   try:
