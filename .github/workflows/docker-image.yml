@@ -19,11 +19,16 @@ jobs:
         registry: ${{ env.REGISTRY }}
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
-    - name: Set image name
+    - uses: benjlevesque/short-sha@v2.2
+      id: short-sha
+    - name: Set image name and tag
       id: meta
       uses: docker/metadata-action@v5
       with:
         images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+        tags: |
+          latest
+          ${{ steps.short-sha.outputs.sha }}
     - name: Build and push Docker image
       uses: docker/build-push-action@v5
       with:
